@@ -45,7 +45,7 @@
                             <form action="{{route('admin.auth.process-login')}}" method="post">
                                 @csrf
                                 <center>
-                                    <img src="{{asset('panel/images/logo.png')}}"
+                                    <img src="{{asset('website/images/logo.png')}}"
                                         style="height: 120px; padding-bottom: 20px">
                                 </center>
                                 <div class="section-field mb-20">

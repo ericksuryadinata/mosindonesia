@@ -7,13 +7,9 @@ use Illuminate\Support\Facades\Storage;
 
 class Service extends Model
 {
-    protected $fillable = ['title', 'description', 'icon'];
+    protected $fillable = ['title', 'description', 'icon', 'active'];
 
-    public function showImage()
-    {
-        if (Storage::exists($this->icon)) {
-            return "storage/$this->icon";
-        }
-        return asset('mos-panel/img/default.png');
+    public function showIcon(){
+        return "fa $this->icon";
     }
 }

@@ -19,6 +19,8 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Data Service
+                <a href="{{ route('admin.banner.create') }}" class="btn btn-success pull-right"><i
+                        class="fa fa-plus"></i> Add Service</a>
             </div>
             <div class="card-body">
                 @if (Session::has('status'))
@@ -45,6 +47,8 @@
                             <td>
                                 <b>{{ $model->title }}</b> <br>
                                 <span>{{ $model->description }}</span> <br>
+                                {!! $model->active ? "<span class='badge badge-success'>Active</span>" : "<span class='badge badge-success'>Not
+                                    Active</span>" !!}<br>
                                 <span class="text-muted">Publish : {{ $model->created_at }}</span>
 
                             </td>
@@ -57,6 +61,12 @@
                                         style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a class="dropdown-item"
                                             href="{{ route('admin.service.edit', $model->id) }}">Edit</a>
+                                        @if (!$model->active)
+                                        <form action="{{ route('admin.service.activate', $model->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <button class="dropdown-item">Activate</button>
+                                        </form>
+                                        @endif
                                         <form action="{{ route('admin.service.destroy', $model->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}

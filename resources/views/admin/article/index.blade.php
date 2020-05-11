@@ -40,6 +40,7 @@
                             <td>
                                 <b>{{ $model->title }}</b> <br>
                                 <span>{{ str_limit(strip_tags($model->description), 300, ' ...') }}</span> <br>
+                                {!! $model->headline ? "<span class='badge badge-success'>Headline</span><br>" : ""!!}
                                 <span class="text-muted">Publish : {{ $model->created_at }}</span>
                             </td>
                             <td>
@@ -54,6 +55,12 @@
                                         style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a class="dropdown-item"
                                             href="{{ route('admin.article.edit', $model->id) }}">Edit</a>
+                                        @if (!$model->headline)
+                                        <form action="{{ route('admin.article.headline', $model->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <button class="dropdown-item">Make Headline</button>
+                                        </form>
+                                        @endif
                                         <form action="{{ route('admin.article.destroy', $model->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}

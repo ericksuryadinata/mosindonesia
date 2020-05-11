@@ -10,9 +10,6 @@
 <!-- Typography -->
 <link rel="stylesheet" type="text/css" href="{{ url('website/css/typography.css') }}" />
 
-<!-- Font Awesome -->
-<link rel="stylesheet" type="text/css" href="{{ url('website/css/typography.css') }}" />
-
 <!-- Shortcodes -->
 <link rel="stylesheet" type="text/css" href="{{ url('website/css/shortcodes/shortcodes.css') }}" />
 

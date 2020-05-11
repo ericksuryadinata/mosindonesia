@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Article;
 
 use App\Models\Article;
 use App\Models\CategoryArticle;
-use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +30,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $data['models'] = Article::orderBy('id', 'desc')->paginate(10);
+        $data['models'] = Article::orderBy('headline','desc')->orderBy('id','desc')->paginate(10);
         return view('admin.article.index', $data);
     }
 
@@ -88,7 +87,6 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         $data['categories'] = CategoryArticle::all();
-        $data['subCategories'] = SubCategory::where('category_article_id', $article->category_article_id)->get();
         $data['model'] = $article;
         return view('admin.article.edit', $data);
     }
@@ -145,5 +143,18 @@ class ArticleController extends Controller
             return redirect()->route('admin.article.index')->with(['status' => 'success', 'message' => 'Delete Successfully']);
         }
         return redirect()->route('admin.article.index')->with(['status' => 'danger', 'message' => 'Delete Failed, Contact Developer']);
+    }
+
+    public function headline(Article $article)
+    {
+        Article::where('headline', 1)->update(['headline' => 0]);
+
+        $update = $article->update(['headline' => 1]);
+
+        if ($update) {
+            return redirect()->route('admin.article.index')->with(['status' => 'success', 'message' => 'Headline Success']);
+        }
+
+        return redirect()->route('admin.article.edit', $article->id)->with(['status' => 'danger', 'message' => 'Headline Failed, Contact Developer']);
     }
 }

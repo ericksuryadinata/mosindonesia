@@ -1,8 +1,8 @@
 @extends('admin.layout')
-@section('title', 'Slider')
+@section('title', 'Banner')
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></li>
-<li class="breadcrumb-item active">Slider</li>
+<li class="breadcrumb-item active">Banner</li>
 @stop
 
 @section('content')
@@ -10,9 +10,9 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-align-justify"></i> Data Sliders
-                <a href="{{ route('admin.slider.create') }}" class="btn btn-success pull-right"><i
-                        class="fa fa-plus"></i> Add Slider</a>
+                <i class="fa fa-align-justify"></i> Data Banners
+                <a href="{{ route('admin.banner.create') }}" class="btn btn-success pull-right"><i
+                        class="fa fa-plus"></i> Add Banner</a>
             </div>
             <div class="card-body">
                 @if (Session::has('status'))
@@ -39,6 +39,7 @@
                             <td>
                                 <b>{{ $model->title }}</b> <br>
                                 <span>{{ $model->description }}</span> <br>
+                                {!! $model->active ? "<span class='badge badge-success'>Active</span>" : "<span class='badge badge-success'>Not Active</span>" !!}<br>
                                 <span class="text-muted">Publish : {{ $model->created_at }}</span>
 
                             </td>
@@ -50,8 +51,14 @@
                                     <div class="dropdown-menu" x-placement="bottom-start"
                                         style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a class="dropdown-item"
-                                            href="{{ route('admin.slider.edit', $model->id) }}">Edit</a>
-                                        <form action="{{ route('admin.slider.destroy', $model->id) }}" method="post">
+                                            href="{{ route('admin.banner.edit', $model->id) }}">Edit</a>
+                                        @if (!$model->active)
+                                        <form action="{{ route('admin.banner.activate', $model->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <button class="dropdown-item">Activate</button>
+                                        </form>
+                                        @endif
+                                        <form action="{{ route('admin.banner.destroy', $model->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}
                                             <button class="dropdown-item">Delete</button>

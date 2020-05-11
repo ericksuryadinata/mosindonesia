@@ -29,14 +29,17 @@ Route::group(['prefix' => 'panelku', 'namespace' => 'Admin', 'as' => 'admin.'], 
 
         Route::resource('category_article', 'Article\CategoryArticleController');
         Route::resource('article', 'Article\ArticleController');
+        Route::post('article/headline/{article}', 'Article\ArticleController@headline')->name('article.headline');
 
-        Route::resource('slider', 'Slider\SliderController');
+        Route::resource('banner', 'Banner\BannerController');
+        Route::post('banner/activate/{banner}','Banner\BannerController@activate')->name('banner.activate');
 
         Route::resource('inbox', 'Inbox\InboxController');
 
         Route::resource('contact', 'Contact\ContactController');
 
         Route::resource('service', 'Service\ServiceController');
+        Route::post('service/activate/{service}', 'Service\ServiceController@activate')->name('service.activate');
 
         Route::resource('setting', 'Setting\SettingController');
 

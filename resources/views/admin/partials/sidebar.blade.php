@@ -28,7 +28,7 @@
                     <i class="nav-icon icon-globe-alt"></i> About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.slider.index') }}">
+                <a class="nav-link" href="{{ route('admin.banner.index') }}">
                     <i class="nav-icon icon-picture"></i> Banner</a>
             </li>
             <li class="nav-item">

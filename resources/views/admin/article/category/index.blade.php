@@ -23,7 +23,6 @@
                         <tr>
                             <th style="width: 20px;">No</th>
                             <th>Description</th>
-                            <!-- <th>Status</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -37,15 +36,6 @@
                                 <span class="text-muted">Publish : {{ $model->created_at }}</span>
 
                             </td>
-                            <!-- <td>
-                                    <div class="btn-group">
-                                        @if($model->is_ongoing == 0)
-                                            <a href="{{ route('admin.category_article.show', $model->id) }}" class="btn btn-info text-white"> Article </a>
-                                        @else
-                                            <a href="javascript:void(0);" class="btn btn-success"> Ongoing </a>
-                                        @endif
-                                    </div>
-                                </td> -->
                             <td>
                                 <!-- /btn-group-->
                                 <div class="btn-group">

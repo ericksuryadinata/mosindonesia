@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('icon');
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

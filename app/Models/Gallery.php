@@ -19,7 +19,7 @@ class Gallery extends Model
         if (Storage::exists($this->url)) {
             return "storage/$this->url";
         }
-        return asset('mos-panel/img/default.png');
+        return asset('img/default.png');
     }
 
     public function showPreview()

@@ -40,9 +40,4 @@ class CategoryArticle extends Model
     {
         return $this->hasMany(Gallery::class, 'category_article_id', 'id');
     }
-
-    public function proceedings ()
-    {
-        return $this->hasMany(Proceeding::class, 'category_article_id', 'id');
-    }
 }

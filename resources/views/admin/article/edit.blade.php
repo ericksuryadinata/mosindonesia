@@ -41,43 +41,6 @@
             description.value = quill.root.innerHTML;
             return true;
         };
-
-        function getSubCategory(that){
-            var value 		= $(that).val();
-            console.log(value);
-            if(value==""){
-                var html 	= '<option value="" >Please select the category</option>';
-                $("#subCategory").html(html);
-                $("#subCategory").prop('disabled',true);
-                return;
-            }
-
-            $.ajax({
-                url:'{{ route('admin.sub_category.show', 0) }}',
-                method: 	"GET",
-                data:  		{'id':value}
-            })
-
-                .done(function(data){
-                    console.log(data);
-                    if(data.success==true){
-
-                        var html 	= '<option value="" >Please select the category</option>';
-
-                        $.each(data.data , function(key, result) {
-                            html +='<option value="'+result.id+'">'+result.name+'</option>';
-                        });
-
-                        $("#subCategory").html(html);
-                        $("#subCategory").prop('disabled',false);
-                        return;
-                    }
-                })
-                .fail(function(e) {
-                    alert("something wrong");
-                    console.log(e);
-                })
-        }
 </script>
 @stop
 

@@ -63,7 +63,7 @@
                         <label class="col-form-label" for="img-container">Exhibition</label>
                         <div class="controls">
                             <img class="img-fluid" id="img-container" alt="Exhibition Gallery" width="100" height="100"
-                                src="{{ asset('mos-panel/img/default.png') }}" />
+                                src="{{ asset('img/default.png') }}" />
                             <input type="file"
                                 onchange="document.getElementById('img-container').src = window.URL.createObjectURL(this.files[0])"
                                 name="image" required>
@@ -81,4 +81,3 @@
 </div>
 <!-- /.row-->
 @stop
-

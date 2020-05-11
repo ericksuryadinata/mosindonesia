@@ -13,7 +13,7 @@ class Setting extends Model
         if (Storage::exists($this->icon)) {
             return "storage/$this->icon";
         }
-        return asset('mos-panel/img/default.png');
+        return asset('img/default.png');
     }
 
     public function showLogo()
@@ -21,7 +21,7 @@ class Setting extends Model
         if (Storage::exists($this->logo)) {
             return "storage/$this->logo";
         }
-        return asset('mos-panel/img/default.png');
+        return asset('img/default.png');
     }
 
     public function showLogoGrayscale()
@@ -29,7 +29,7 @@ class Setting extends Model
         if (Storage::exists($this->logo_grayscale)) {
             return "storage/$this->logo_grayscale";
         }
-        return asset('mos-panel/img/default.png');
+        return asset('img/default.png');
     }
 
     public function showBgBanner()
@@ -37,6 +37,6 @@ class Setting extends Model
         if (Storage::exists($this->bg_banner)) {
             return "storage/$this->bg_banner";
         }
-        return asset('mos-panel/img/default.png');
+        return asset('img/default.png');
     }
 }

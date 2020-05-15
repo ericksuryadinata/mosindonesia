@@ -26,11 +26,6 @@ class CategoryArticle extends Model
         ];
     }
 
-    public function subCategories ()
-    {
-        return $this->hasMany(SubCategory::class, 'category_article_id', 'id');
-    }
-
     public function articles ()
     {
         return $this->hasMany(Article::class, 'category_article_id', 'id');

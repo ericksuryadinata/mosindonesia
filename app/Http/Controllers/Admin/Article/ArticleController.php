@@ -7,6 +7,7 @@ use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -30,7 +31,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $data['models'] = Article::orderBy('headline','desc')->orderBy('id','desc')->paginate(10);
+        $data['models'] = Article::orderBy('headline', 'desc')->orderBy('id', 'desc')->paginate(10);
         return view('admin.article.index', $data);
     }
 
@@ -60,8 +61,9 @@ class ArticleController extends Controller
             'image' => 'required|image'
         ]);
 
+        $title = Str::title($request->title);
         $path = $request->file('image')->store('article');
-        if ($this->article->create($request->only('category_article_id', 'title', 'description', 'sub_category_id') + ['image' => $path])) {
+        if ($this->article->create($request->only('category_article_id', 'description', 'sub_category_id') + ['image' => $path, 'title' => $title])) {
             return redirect()->route('admin.article.index')->with(['status' => 'success', 'message' => 'Save Successfully']);
         }
         return redirect()->route('admin.article.create')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
@@ -107,6 +109,7 @@ class ArticleController extends Controller
             'image' => 'image'
         ]);
 
+        $title = Str::title($request->title);
         if ($request->hasFile('image')) {
 
             if (Storage::exists($article->image)) {
@@ -114,9 +117,9 @@ class ArticleController extends Controller
             }
 
             $path = $request->file('image')->store('article');
-            $update = $article->update($request->only('category_article_id', 'title', 'description', 'sub_category_id') + ['image' => $path]);
+            $update = $article->update($request->only('category_article_id', 'description', 'sub_category_id') + ['image' => $path, 'title' => $title]);
         } else {
-            $update = $article->update($request->only('category_article_id', 'title', 'description', 'sub_category_id'));
+            $update = $article->update($request->only('category_article_id', 'description', 'sub_category_id'));
         }
 
         if ($update) {

@@ -2,6 +2,7 @@
 @section('title', 'Banner')
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></li>
+<li class="breadcrumb-item">Setting</li>
 <li class="breadcrumb-item active">Banner</li>
 @stop
 
@@ -39,7 +40,7 @@
                             <td>
                                 <b>{{ $model->title }}</b> <br>
                                 <span>{{ $model->description }}</span> <br>
-                                {!! $model->active ? "<span class='badge badge-success'>Active</span>" : "<span class='badge badge-success'>Not Active</span>" !!}<br>
+                                {!! $model->active ? "<span class='badge badge-success'>Active</span>" : "<span class='badge badge-danger'>Not Active</span>" !!}<br>
                                 <span class="text-muted">Publish : {{ $model->created_at }}</span>
 
                             </td>

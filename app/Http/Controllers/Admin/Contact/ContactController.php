@@ -8,6 +8,20 @@ use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
+
+    /**
+     * @var Contact $contact
+     */
+    protected $contact;
+
+    /**
+     * ContactController constructor.
+     */
+    public function __construct()
+    {
+        $this->contact = new Contact();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +29,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $data['model'] = Contact::find(1);
+        $data['models'] = Contact::orderBy('used', 'desc')->paginate(10);
         return view('admin.contact.index', $data);
     }
 
@@ -26,7 +40,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.contact.create');
     }
 
     /**
@@ -37,7 +51,17 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
+            'g_map' => 'required'
+        ]);
+
+        if ($this->contact->create($request->all())) {
+            return redirect()->route('admin.contact.index')->with(['status' => 'success', 'message' => 'Save Successfully']);
+        }
+        return redirect()->route('admin.contact.index')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
     }
 
     /**
@@ -57,9 +81,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        //
+        return view('admin.contact.edit', ['model' => $contact]);
     }
 
     /**
@@ -80,9 +104,8 @@ class ContactController extends Controller
 
         if ($contact->update($request->all())) {
             return redirect()->route('admin.contact.index')->with(['status' => 'success', 'message' => 'Save Successfully']);
-        } else {
-            return redirect()->route('admin.contact.index')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
         }
+        return redirect()->route('admin.contact.index')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
     }
 
     /**
@@ -91,8 +114,23 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Contact $contact)
     {
-        //
+        if ($contact->delete()) {
+            return redirect()->route('admin.contact.index')->with(['status' => 'success', 'message' => 'Delete Successfully']);
+        }
+        return redirect()->route('admin.contact.index')->with(['status' => 'danger', 'message' => 'Delete Failed, Contact Developer']);
+    }
+
+    public function use(Contact $contact)
+    {
+        Contact::where('used', 1)->update(['used' => 0]);
+
+        $update = $contact->update(['used' => 1]);
+        if ($update) {
+            return redirect()->route('admin.contact.index')->with(['status' => 'success', 'message' => 'Contact Used']);
+        }
+
+        return redirect()->route('admin.contact.index')->with(['status' => 'danger', 'message' => 'Used Contact Failed, Contact Developer']);
     }
 }

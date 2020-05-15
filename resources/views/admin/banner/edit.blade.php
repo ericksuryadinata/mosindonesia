@@ -1,7 +1,8 @@
 @extends('admin.layout')
-
+@section('title', 'Banner')
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></li>
+<li class="breadcrumb-item">Setting</li>
 <li class="breadcrumb-item"><a href="{{ route('admin.banner.index') }}">Banner</a></li>
 <li class="breadcrumb-item active">Edit</li>
 @stop

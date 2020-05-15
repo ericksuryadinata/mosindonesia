@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Gallery;
 use App\Models\Service;
 use App\Models\Banner;
+use App\Models\Contact;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
         $mergedArticle = $article->merge($allArticle);
         $data['articles'] = $mergedArticle->all();
         $data['services'] = Service::where('active',1)->get();
+        $data['contacts'] = Contact::all();
 
         return view('website.home.index', $data);
     }

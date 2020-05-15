@@ -37,6 +37,7 @@ Route::group(['prefix' => 'panelku', 'namespace' => 'Admin', 'as' => 'admin.'], 
         Route::resource('inbox', 'Inbox\InboxController');
 
         Route::resource('contact', 'Contact\ContactController');
+        Route::post('contact/use/{contact}','Contact\ContactController@use')->name('contact.use');
 
         Route::resource('service', 'Service\ServiceController');
         Route::post('service/activate/{service}', 'Service\ServiceController@activate')->name('service.activate');

@@ -41,18 +41,16 @@ class ServiceController extends Controller
         $request->validate([
             'title'         => 'required|max:200',
             'description'   => 'required',
-            'icon'          => 'required|image'
+            'icon'          => 'required'
         ]);
-
-        $path = $request->file('icon')->store('service');
 
         $service = Service::create([
             'title'         => $request->title,
             'description'   => $request->description,
-            'icon'          => $path
+            'icon'          => $request->icon
         ]);
 
-        if($service) {
+        if ($service) {
             return redirect()->route('admin.service.index')->with(['status' => 'success', 'message' => 'Save Successfully']);
         }
         return redirect()->route('admin.service.create')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
@@ -75,9 +73,8 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        $service = Service::findOrFail($id);
         return view('admin.service.edit', compact('service'));
     }
 
@@ -88,32 +85,20 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Service $service)
     {
-        $service  = Service::find($id);
 
         $request->validate([
             'title'         => 'required|max:200',
             'description'   => 'required',
-            'icon'          => 'image'
+            'icon'          => 'require'
         ]);
 
-        if ($request->file('icon')) {
-            $file = $request->file('icon');
-            $path = $file->store("service");
-
-            if ($service->icon && Storage::exists($service->icon)) {
-                Storage::delete($service->icon);
-            }
+        if ($service->update($request->all())) {
+            return redirect()->route('admin.service.index')->with(['status' => 'success', 'message' => 'Service updated successfully']);
         }
 
-        $service->fill([
-            'title'             => $request->title,
-            'description'       => $request->description,
-            'icon'              => ($request->file('icon') ? $path : ($service->icon != null ? $service->icon : null))
-        ])->save();
-
-        return redirect()->route('admin.service.index')->with(['status' => 'success', 'message' => 'Service updated successfully']);
+        return redirect()->route('admin.service.index')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
     }
 
     /**
@@ -122,16 +107,12 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        $service = Service::findOrFail($id);
-
-        if (@$service->icon && Storage::exists($service->icon)) {
-            Storage::delete($service->icon);
+        if($service->delete()){
+            return redirect()->route('admin.service.index')->with(['status' => 'success', 'message' => 'Service deleted successfully']);
         }
 
-        $service->delete();
-
-        return redirect()->route('admin.service.index')->with(['status' => 'success', 'message' => 'Service deleted successfully']);
+        return redirect()->route('admin.service.index')->with(['status' => 'danger', 'message' => 'Delete Failed, Contact Developer']);
     }
 }

@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Data Service
-                <a href="{{ route('admin.banner.create') }}" class="btn btn-success pull-right"><i
+                <a href="{{ route('admin.service.create') }}" class="btn btn-success pull-right"><i
                         class="fa fa-plus"></i> Add Service</a>
             </div>
             <div class="card-body">
@@ -40,14 +40,12 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
-                                <div class="thumbnail">
-                                    <img class="img-thumbnail" src="{{ asset($model->showImage()) }}" alt="">
-                                </div>
+                                <span><i class="{{$model->showIcon()}}"></i></span>
                             </td>
                             <td>
                                 <b>{{ $model->title }}</b> <br>
                                 <span>{{ $model->description }}</span> <br>
-                                {!! $model->active ? "<span class='badge badge-success'>Active</span>" : "<span class='badge badge-success'>Not
+                                {!! $model->active ? "<span class='badge badge-success'>Active</span>" : "<span class='badge badge-danger'>Not
                                     Active</span>" !!}<br>
                                 <span class="text-muted">Publish : {{ $model->created_at }}</span>
 

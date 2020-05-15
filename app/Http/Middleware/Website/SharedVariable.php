@@ -21,7 +21,7 @@ class SharedVariable
     public function handle($request, Closure $next)
     {
         $data['categoryArticles'] = CategoryArticle::all();
-        $data['contact'] = Contact::find(1);
+        $data['contact'] = Contact::where('used',1)->first();
         $data['setting'] = Setting::find(1);
         $data['meta'] = $data['setting'];
         $data['socialMedia'] = SocialMedia::all();

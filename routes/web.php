@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::namespace('Home')->name('home.')->middleware('website.shared.variable')->group(function(){
-    Route::get('/','HomeController@index')->name('landing.index');
+Route::middleware('website.shared.variable')->group(function(){
+    Route::get('/', 'Home\HomeController@index')->name('home.landing.index');
+    Route::get('/kontak-kami', 'Contact\ContactController@index')->name('contact-us.index');
 });

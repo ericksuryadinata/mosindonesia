@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Article;
 use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class CategoryArticleController extends Controller
 {
@@ -54,7 +55,9 @@ class CategoryArticleController extends Controller
             'name' => 'required|max:200',
             'description' => 'required',
         ]);
-        if ($this->categoryArticle->create($request->all())) {
+        $data = $request->all();
+        $data['name'] = Str::title($data['name']);
+        if ($this->categoryArticle->create($data)) {
             return redirect()->route('admin.category_article.index')->with(['status' => 'success', 'message' => 'Save Successfully']);
         }
         return redirect()->route('admin.category_article.create')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
@@ -98,7 +101,9 @@ class CategoryArticleController extends Controller
             'name' => 'required|max:200',
             'description' => 'required',
         ]);
-        if ($category_article->update($request->all())) {
+        $data = $request->all();
+        $data['name'] = Str::title($data['name']);
+        if ($category_article->update($data)) {
             return redirect()->route('admin.category_article.index')->with(['status' => 'success', 'message' => 'Update Successfully']);
         }
         return redirect()->route('admin.category_article.edit', $category_article->id)->with(['status' => 'danger', 'message' => 'Update Failed, Contact Developer']);

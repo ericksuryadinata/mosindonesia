@@ -3,7 +3,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="{{ asset($setting->showlogo()) }}" width="89" height="25" alt="CoreUI Logo">
+        <img class="navbar-brand-full" src="{{ asset($setting->showLogo()) }}" width="89" height="25" alt="CoreUI Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>

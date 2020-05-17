@@ -7,11 +7,12 @@
 <link href="{{url('mos-panel/css/style.css')}}" rel="stylesheet">
 <link href="{{url('mos-panel/vendors/pace-progress/css/pace.min.css')}}" rel="stylesheet">
 <link href="{{url('mos-panel/css/custom.css')}}" rel="stylesheet">
+<link href="{{url('mos-panel/css/quill.snow.css')}}" rel="stylesheet">
 <style type="text/css">
-	.thumbnail {
-	    height: 72px;
-	    width: 100px;
-	    overflow: hidden;
-	}
+    .thumbnail {
+        height: 72px;
+        width: 100px;
+        overflow: hidden;
+    }
 </style>
 @yield('styles')

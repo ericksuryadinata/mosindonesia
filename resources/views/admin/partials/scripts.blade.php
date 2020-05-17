@@ -5,9 +5,5 @@
 <script src="{{url('mos-panel/vendors/pace-progress/js/pace.min.js')}}"></script>
 <script src="{{url('mos-panel/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js')}}"></script>
 <script src="{{url('mos-panel/vendors/@coreui/coreui/js/coreui.min.js')}}"></script>
-<!-- Plugins and scripts required by this view-->
-{{--<script src="{{url('mos-panel/vendors/chart.js/js/Chart.min.js')}}"></script>--}}
-{{--<script src="{{url('mos-panel/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js')}}"></script>--}}
-{{--<script src="{{url('mos-panel/js/main.js')}}"></script>--}}
-
+<script src="{{url('mos-panel/js/quill.min.js')}}"></script>
 @yield('scripts')

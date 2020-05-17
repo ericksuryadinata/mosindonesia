@@ -19,8 +19,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Data Service
-                <a href="{{ route('admin.service.create') }}" class="btn btn-success pull-right"><i
-                        class="fa fa-plus"></i> Add Service</a>
+                <a href="{{ route('admin.service.create') }}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Service</a>
             </div>
             <div class="card-body">
                 @if (Session::has('status'))
@@ -40,7 +39,7 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
-                                <span><i class="{{$model->showIcon()}}"></i></span>
+                                <span><i class="{{$model->icon}}"></i></span>
                             </td>
                             <td>
                                 <b>{{ $model->title }}</b> <br>

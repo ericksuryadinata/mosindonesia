@@ -8,10 +8,6 @@
                     <i class="nav-icon icon-speedometer"></i> Dashboard
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.service.index') }}">
-                    <i class="nav-icon fa fa-puzzle-piece"></i> Service</a>
-            </li>
             <li class="nav-title">Article</li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.category_article.index') }}">
@@ -38,6 +34,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.social_media.index') }}">
                     <i class="nav-icon icon-share"></i> Social Media</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.service.index') }}">
+                    <i class="nav-icon fa fa-puzzle-piece"></i> Service</a>
             </li>
 
             <li class="nav-title">Galleries</li>

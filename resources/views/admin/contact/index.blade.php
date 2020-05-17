@@ -54,7 +54,7 @@
                                     <div class="dropdown-menu" x-placement="bottom-start"
                                         style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a class="dropdown-item" href="{{ route('admin.contact.edit', $model->id) }}">Edit</a>
-                                        @if (!$model->active)
+                                        @if (!$model->used)
                                         <form action="{{ route('admin.contact.use', $model->id) }}" method="post">
                                             {{ csrf_field() }}
                                             <button class="dropdown-item">Use</button>

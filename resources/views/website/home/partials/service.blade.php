@@ -14,7 +14,7 @@
                 <div class="feature-text left-icon">
                     <div class="position-relative clearfix">
                         <div class="feature-icon">
-                            <span class="{{$service->showIcon()}}"></span>
+                            <span class="{{$service->icon}}"></span>
                         </div>
                     </div>
                     <div class="feature-info">

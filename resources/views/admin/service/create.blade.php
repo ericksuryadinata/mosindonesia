@@ -40,13 +40,19 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-form-label" for="img-container">Icon</label>
-                        <div class="controls">
-                            <img class="img-fluid" id="img-container" alt="Icon Service" width="100" height="100"
-                                src="{{ asset('img/default.png') }}" />
-                            <input type="file"
-                                onchange="document.getElementById('img-container').src = window.URL.createObjectURL(this.files[0])"
-                                name="icon" required>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12">
+                                <label class="col-form-label" for="img-container">Icon</label>
+                                <div class="controls">
+                                    <input class="form-control icp icp-auto" type="text" name="icon"/>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-12 lead">
+                                <label class="col-form-label" for="img-container">Preview Icon</label>
+                                <div class="controls">
+                                    <i class="fa-3x picker-target"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -61,3 +67,24 @@
 </div>
 <!-- /.row-->
 @stop
+
+@section('scripts')
+<script src="{{url('mos-panel/vendors/icon-picker/js/fontawesome-iconpicker.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $('.icp-auto').iconpicker({
+            placement:'top',
+        });
+
+        $('.icp').on('iconpickerSelected', function (e) {
+            $('.lead .picker-target').get(0).className = 'picker-target fa-3x ' +
+                e.iconpickerInstance.options.iconBaseClass + ' ' +
+                e.iconpickerInstance.options.fullClassFormatter(e.iconpickerValue);
+        });
+    });
+</script>
+@endsection
+
+@section('styles')
+<link href="{{url('mos-panel/vendors/icon-picker/css/fontawesome-iconpicker.min.css')}}" rel="stylesheet">
+@endsection

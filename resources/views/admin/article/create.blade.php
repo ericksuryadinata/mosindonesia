@@ -1,11 +1,7 @@
 @extends('admin.layout')
 @section('title', 'Add Article')
-@section('styles')
-<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-@stop
 
 @section('scripts')
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>
     var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons

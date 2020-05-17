@@ -91,7 +91,7 @@ class ServiceController extends Controller
         $request->validate([
             'title'         => 'required|max:200',
             'description'   => 'required',
-            'icon'          => 'require'
+            'icon'          => 'required'
         ]);
 
         if ($service->update($request->all())) {

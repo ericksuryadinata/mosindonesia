@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Website\Service;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\View;
+use App\Models\Service;
 class ServiceController extends Controller
 {
+    /**
+     * Service constructor
+     */
+    public function __construct()
+    {
+        View::share('menu', 'Layanan');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $data['services'] = Service::where('active', 1)->get();
+        return view('website.service.index', $data);
     }
 
     /**

@@ -22,7 +22,7 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        View::share('menu', 'Contact Us');
+        View::share('menu', 'Kontak Kami');
         $this->inbox = new Inbox();
     }
 

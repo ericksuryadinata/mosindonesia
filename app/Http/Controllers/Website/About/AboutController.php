@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Website\About;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class AboutController extends Controller
 {
+    /**
+     * About Constructor
+     */
+    public function __construct()
+    {
+        View::share('menu', 'Tentang Kami');
+    }
+
     /**
      * Display a listing of the resource.
      *

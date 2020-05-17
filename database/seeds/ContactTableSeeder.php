@@ -15,6 +15,7 @@ class ContactTableSeeder extends Seeder
         DB::table('contacts')->truncate();
 
         \App\Models\Contact::create([
+            'used' => '1',
             'email' => 'email@email.com',
             'phone' => '+62 83830803289',
             'address' => 'Jl. Arief Rachman Hakim No.150, Keputih, Sukolilo, Surabaya, Jawa Timur 60111',

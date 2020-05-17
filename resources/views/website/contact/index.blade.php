@@ -44,8 +44,10 @@
         </div> --}}
         <div class="container">
             <div class="row justify-content-end">
-                di
-                <div class="col-lg-5">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
                     <div class="contact-3-info page-section-pt">
                         <div class="clearfix">
                             <div class="section-title mb-0">

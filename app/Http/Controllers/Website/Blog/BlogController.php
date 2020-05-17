@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Website\Blog;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class BlogController extends Controller
 {
+
+    /**
+     * Blog Constructor
+     */
+    public function __construct()
+    {
+        View::share('menu','Blog');
+    }
     /**
      * Display a listing of the resource.
      *

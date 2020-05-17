@@ -43,9 +43,9 @@
                             <!-- menu links -->
                             <div class="menu-bar">
                                 <ul class="menu-links">
-                                    <li class="{{ ($menu == 'Home') ? 'active':'' }}"><a href="#">Beranda </a> </li>
-                                    <li class="{{ ($menu == 'About Us') ? 'active':'' }}"><a href="#">Tentang Kami </a> </li>
-                                    <li class="{{ ($menu == 'Service') ? 'active':'' }}"><a href="#">Layanan </a> </li>
+                                    <li class="{{ ($menu == 'Beranda') ? 'active':'' }}"><a href="#">Beranda </a> </li>
+                                    <li class="{{ ($menu == 'Tentang Kami') ? 'active':'' }}"><a href="#">Tentang Kami </a> </li>
+                                    <li class="{{ ($menu == 'Layanan') ? 'active':'' }}"><a href="{{route('website.service.index')}}">Layanan </a> </li>
                                     <li class="{{ ($menu == 'Blog') ? 'active':'' }}"><a href="javascript:void(0)">Blog <i class="fas fa-angle-down"></i> </a>
                                         <ul class="drop-down-multilevel left-side">
                                             @foreach ($categoryArticles as $category)
@@ -53,7 +53,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="{{ ($menu == 'Contact Us') ? 'active':'' }}"><a href="{{route('website.contact-us.index')}}">Kontak Kami</a> </li>
+                                    <li class="{{ ($menu == 'Kontak Kami') ? 'active':'' }}"><a href="{{route('website.contact-us.index')}}">Kontak Kami</a> </li>
                                 </ul>
                             </div>
                         </div>

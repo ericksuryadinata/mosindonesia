@@ -64,7 +64,7 @@
                         @endforeach
                         @if ($models->isEmpty())
                         <tr>
-                            <td colspan="3" class="text-center"> <b>Table Was Empty</b> </td>
+                            <td colspan="4" class="text-center"> <b>Table Was Empty</b> </td>
                         </tr>
                         @endif
                     </tbody>

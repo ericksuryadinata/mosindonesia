@@ -47,7 +47,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.gallery.index') }}">
-                    <i class="nav-icon fa fa-file-image-o"></i> Image</a>
+                    <i class="nav-icon fas fa-file-image"></i> Image</a>
             </li>
 
             <li class="nav-title">Inboxes</li>

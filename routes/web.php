@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('website.shared.variable')->group(function(){
     Route::get('/', 'Home\HomeController@index')->name('home.landing.index');
+    Route::get('/tentang-kami','About\AboutController@index')->name('about.index');
+    Route::get('/layanan', 'Service\ServiceController@index')->name('service.index');
     Route::get('/kontak-kami', 'Contact\ContactController@index')->name('contact-us.index');
 });

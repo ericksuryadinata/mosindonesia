@@ -38,7 +38,7 @@
                         <label class="col-form-label" for="name">Name</label>
                         <div class="controls">
                             <input class="form-control" id="name" size="16" type="text" name="name"
-                                placeholder="Title of the image" value="{{ $model->name }}">
+                                placeholder="Social Media Name" value="{{ $model->name }}">
                         </div>
                     </div>
                     <div class="form-group">

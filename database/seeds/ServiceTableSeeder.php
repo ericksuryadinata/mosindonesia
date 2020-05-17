@@ -14,7 +14,7 @@ class ServiceTableSeeder extends Seeder
     {
         DB::table('services')->truncate();
 
-        $icons = ['fa-laptop', 'fa-network-wired', 'fa-laptop-code', 'fa-code', 'fa-video', 'fa-magic'];
+        $icons = ['fas fa-laptop', 'fas fa-network-wired', 'fas fa-laptop-code', 'fas fa-code', 'fas fa-video', 'fas fa-magic'];
 
         foreach ($icons as $icon) {
             \App\Models\Service::create([

@@ -1,5 +1,5 @@
 <header id="header" class="header light">
-    <div class="topbar topbar-dark">
+    <div class="topbar">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 xs-mb-10">
@@ -49,7 +49,7 @@
                                     <li class="{{ ($menu == 'Blog') ? 'active':'' }}"><a href="javascript:void(0)">Blog <i class="fas fa-angle-down"></i> </a>
                                         <ul class="drop-down-multilevel left-side">
                                             @foreach ($categoryArticles as $category)
-                                            <li class="{{ (@$subMenu == $category->name) ? 'active':'' }}"><a href="#">{{$category->name}}</a> </li>
+                                            <li class="{{ (@$subMenu == $category->name) ? 'active':'' }}"><a href="{{route('website.blog.category', $category->slug)}}">{{$category->name}}</a> </li>
                                             @endforeach
                                         </ul>
                                     </li>

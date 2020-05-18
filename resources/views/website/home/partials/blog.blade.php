@@ -16,8 +16,8 @@
                         <img class="img-fluid" src="{{$article->showImage()}}" alt="">
                     </div>
                     <div class="blog-name">
-                        <a class="tag" href="#">{{$article->categoryArticle->name}}</a>
-                        <h4 class="mt-15 text-white"><a href="#">{{$article->title}}</a></h4>
+                        <a class="tag" href="{{route('website.blog.single', ['category' => $article->categoryArticle->slug,'slug'=>$article->slug])}}">{{$article->categoryArticle->name}}</a>
+                        <h4 class="mt-15 text-white"><a href="{{route('website.blog.single', ['category' => $article->categoryArticle->slug,'slug'=>$article->slug])}}">{{$article->title}}</a></h4>
                         <p class="mb-0">{{$article->niceDescription(20)}}</p>
                     </div>
                 </div>
@@ -28,10 +28,11 @@
                     <img class="img-fluid" src="{{$article->showImage()}}" alt="">
                     <div class="blog-info  p-3">
                         <span class="post-category"><a class="mb-10"
-                                href="#">{{$article->categoryArticle->name}}</a></span>
-                        <h4> <a href="#"> {{$article->title}}</a></h4>
+                                href="{{route('website.blog.single', ['category' => $article->categoryArticle->slug,'slug'=>$article->slug])}}">{{$article->categoryArticle->name}}</a></span>
+                        <h4> <a href="{{route('website.blog.single', ['category' => $article->categoryArticle->slug,'slug'=>$article->slug])}}"> {{$article->title}}</a></h4>
                         <p class="mb-0">{{$article->niceDescription(20)}}</p>
-                        <span><i class="fa fa-calendar-check-o"></i> {{$article->created_at}} </span>
+                        <span><i class="fas fa-calendar-check"></i> {{$article->created_at->format('Y-m-d')}} </span>
+                        <span><i class="fas fa-clock"></i> {{$article->created_at->format('H:i:s')}} </span>
                     </div>
                 </div>
             </div>

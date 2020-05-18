@@ -22,12 +22,10 @@ class CreateSettingsTable extends Migration
             $table->text('description')->nullable();
             $table->text('fb_pixel')->nullable();
             $table->text('google_analytic')->nullable();
-            $table->string('url')->nullable();
             $table->string('icon')->nullable();
             $table->string('logo')->nullable();
             $table->string('logo_grayscale')->nullable();
             $table->string('bg_banner')->nullable();
-            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

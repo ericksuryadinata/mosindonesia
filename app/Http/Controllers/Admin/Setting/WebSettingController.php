@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class SettingController extends Controller
+class WebSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class SettingController extends Controller
     public function index()
     {
         $data['model'] = Setting::find(1);
-        return view('admin.setting.index', $data);
+        return view('admin.web_setting.index', $data);
     }
 
     /**
@@ -67,29 +67,11 @@ class SettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param Setting $setting
+     * @param Setting $web_setting
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, Setting $web_setting)
     {
-        $config = [
-            'icon' => 'image',
-            'logo' => 'image',
-            'logo_grayscale' => 'image',
-            'bg_banner' => 'image'
-        ];
-        if ($setting->icon == null) {
-            $config['icon'] = 'required|image';
-        }
-        if ($setting->logo == null) {
-            $config['logo'] = 'required|image';
-        }
-        if ($setting->logo_grayscale == null) {
-            $config['logo_grayscale'] = 'required|image';
-        }
-        if ($setting->bg_banner == null) {
-            $config['bg_banner'] = 'required|image';
-        }
         $request->validate([
             'title' => 'required',
             'author' => 'required',
@@ -103,16 +85,16 @@ class SettingController extends Controller
         ]);
 
         $upload = [
-            'icon' => $setting->icon,
-            'logo' => $setting->logo,
-            'logo_grayscale' => $setting->logo_grayscale,
-            'bg_banner' => $setting->bg_banner
+            'icon' => $web_setting->icon,
+            'logo' => $web_setting->logo,
+            'logo_grayscale' => $web_setting->logo_grayscale,
+            'bg_banner' => $web_setting->bg_banner
         ];
 
         if ($request->hasFile('icon')) {
 
-            if (Storage::exists($setting->icon)) {
-                Storage::delete($setting->icon);
+            if (Storage::exists($web_setting->icon)) {
+                Storage::delete($web_setting->icon);
             }
 
             $path = $request->file('icon')->store('setting');
@@ -121,8 +103,8 @@ class SettingController extends Controller
 
         if ($request->hasFile('logo')) {
 
-            if (Storage::exists($setting->logo)) {
-                Storage::delete($setting->logo);
+            if (Storage::exists($web_setting->logo)) {
+                Storage::delete($web_setting->logo);
             }
 
             $path = $request->file('logo')->store('setting');
@@ -131,8 +113,8 @@ class SettingController extends Controller
 
         if ($request->hasFile('logo_grayscale')) {
 
-            if (Storage::exists($setting->logo_grayscale)) {
-                Storage::delete($setting->logo_grayscale);
+            if (Storage::exists($web_setting->logo_grayscale)) {
+                Storage::delete($web_setting->logo_grayscale);
             }
 
             $path = $request->file('logo_grayscale')->store('setting');
@@ -141,20 +123,20 @@ class SettingController extends Controller
 
         if ($request->hasFile('bg_banner')) {
 
-            if (Storage::exists($setting->bg_banner)) {
-                Storage::delete($setting->bg_banner);
+            if (Storage::exists($web_setting->bg_banner)) {
+                Storage::delete($web_setting->bg_banner);
             }
 
             $path = $request->file('bg_banner')->store('setting');
             $upload['bg_banner'] = $path;
         }
 
-        $save = $setting->update($request->except('icon', 'logo', 'logo_grayscale','bg_banner','url') + $upload);
+        $save = $web_setting->update($request->only('title', 'author', 'short_description','description') + $upload);
 
         if ($save) {
-            return redirect()->route('admin.setting.index')->with(['status' => 'success', 'message' => 'Update Successfully']);
+            return redirect()->route('admin.web_setting.index')->with(['status' => 'success', 'message' => 'Update Successfully']);
         } else {
-            return redirect()->route('admin.setting.index')->with(['status' => 'danger', 'message' => 'Update Failed, Contact Developer']);
+            return redirect()->route('admin.web_setting.index')->with(['status' => 'danger', 'message' => 'Update Failed, Contact Developer']);
         }
     }
 

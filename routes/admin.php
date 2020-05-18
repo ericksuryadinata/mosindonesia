@@ -42,7 +42,7 @@ Route::group(['prefix' => 'panelku', 'namespace' => 'Admin', 'as' => 'admin.'], 
         Route::resource('service', 'Service\ServiceController');
         Route::post('service/activate/{service}', 'Service\ServiceController@activate')->name('service.activate');
 
-        Route::resource('setting', 'Setting\SettingController');
+        Route::resource('web_setting', 'Setting\WebSettingController');
 
         Route::resource('social_media', 'SocialMedia\SocialMediaController');
 

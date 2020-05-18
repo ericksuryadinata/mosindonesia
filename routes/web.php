@@ -18,4 +18,5 @@ Route::middleware('website.shared.variable')->group(function(){
     Route::get('/tentang-kami','About\AboutController@index')->name('about.index');
     Route::get('/layanan', 'Service\ServiceController@index')->name('service.index');
     Route::get('/kontak-kami', 'Contact\ContactController@index')->name('contact-us.index');
+    Route::post('/kontak-kami', 'Contact\ContactController@store')->name('contact-us.store');
 });

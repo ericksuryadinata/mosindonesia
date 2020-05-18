@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Validation\Rule;
-
+use Illuminate\Support\Facades\Config;
 class ReCaptcha implements Rule
 {
     /**
@@ -33,7 +33,7 @@ class ReCaptcha implements Rule
             [
                 'form_params' =>
                 [
-                    'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+                    'secret' => Config::get('services.recaptcha.secret'),
                     'response' => $value
                 ]
             ]

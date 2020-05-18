@@ -11,7 +11,7 @@ class ChangePasswordController extends Controller
 {
     public function index ()
     {
-        return view('admin.setting.password');
+        return view('admin.profile.password');
     }
 
     public function store (Request $request)

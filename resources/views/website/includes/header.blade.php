@@ -43,7 +43,7 @@
                             <!-- menu links -->
                             <div class="menu-bar">
                                 <ul class="menu-links">
-                                    <li class="{{ ($menu == 'Beranda') ? 'active':'' }}"><a href="#">Beranda </a> </li>
+                                    <li class="{{ ($menu == 'Beranda') ? 'active':'' }}"><a href="{{route('website.home.landing.index')}}">Beranda </a> </li>
                                     <li class="{{ ($menu == 'Tentang Kami') ? 'active':'' }}"><a href="#">Tentang Kami </a> </li>
                                     <li class="{{ ($menu == 'Layanan') ? 'active':'' }}"><a href="{{route('website.service.index')}}">Layanan </a> </li>
                                     <li class="{{ ($menu == 'Blog') ? 'active':'' }}"><a href="javascript:void(0)">Blog <i class="fas fa-angle-down"></i> </a>

@@ -4,7 +4,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 sm-mb-30">
                 <div class="footer-logo">
                     <img id="logo-footer" class="mb-20" src="{{ asset($setting->showlogo()) }}" alt="{{$setting->title}}">
-                    <p class="pb-10"> {{$setting->description}}</p>
+                    <p class="pb-10"> {!!$setting->description!!}</p>
                 </div>
                 <div class="social-icons color-hover">
                     <ul>

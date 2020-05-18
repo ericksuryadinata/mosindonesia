@@ -1,17 +1,12 @@
 @extends('admin.layout')
-@section('title', 'About')
-@section('styles')
-<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
-    rel="stylesheet" />
-@stop
+@section('title', 'Web Setting')
 
 @section('breadcrumb')
 <li class="breadcrumb-item">
     <a href="{{ route('admin.dashboard.index') }}">Dashboard</a>
 </li>
 <li class="breadcrumb-item">Setting</li>
-<li class="breadcrumb-item active">About</li>
+<li class="breadcrumb-item active">Web Setting</li>
 @stop
 
 @section('content')
@@ -20,7 +15,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-edit"></i>Form About</div>
+                <i class="fa fa-edit"></i>Form Web Setting</div>
             <div class="card-body">
                 @if (Session::has('status'))
                 <div class="alert alert-{{ session('status') }}" role="alert">{{ session('message') }}</div>
@@ -30,7 +25,7 @@
                 <div class="alert alert-danger" role="alert">{{ $error }}</div>
                 @endforeach
                 @endif
-                <form class="form-horizontal" action="{{ route('admin.setting.update', $model->id) }}" method="post"
+                <form class="form-horizontal" action="{{ route('admin.web_setting.update', $model->id) }}" method="post"
                     enctype="multipart/form-data">
                     {{ method_field('put') }}
                     {{ csrf_field() }}
@@ -129,7 +124,7 @@
                     </div>
                     <div class="form-actions">
                         <button class="btn btn-primary" type="submit">Save changes</button>
-                        <a href="{{ route('admin.setting.index') }}" class="btn btn-secondary">Cancel</a>
+                        <a href="{{ route('admin.web_setting.index') }}" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
             </div>
@@ -141,8 +136,6 @@
 @stop
 
 @section('scripts')
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <script>
     var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons

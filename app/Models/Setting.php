@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Setting extends Model
 {
-    protected $fillable = ['title', 'author', 'keyword', 'short_description', 'description', 'fb_pixel', 'google_analytic', 'icon', 'logo', 'logo_grayscale', 'bg_banner', 'type', 'url', 'date'];
+    protected $fillable = ['title', 'author', 'keyword', 'short_description', 'description', 'fb_pixel', 'google_analytic', 'icon', 'logo', 'logo_grayscale', 'bg_banner'];
     public function showIcon()
     {
         if (Storage::exists($this->icon)) {

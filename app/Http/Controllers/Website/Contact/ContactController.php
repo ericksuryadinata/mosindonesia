@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Website\Contact;
 
 use App\Models\Contact;
 use App\Models\Inbox;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Rules\ReCaptcha;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 
 class ContactController extends Controller
@@ -33,7 +33,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('website.contact.index');
+        $data['contact'] = Contact::whereUsed(1)->first();
+        $data['allContact'] = Contact::orderBy('id')->get();
+        $data['siteKey'] = Config::get('services.recaptcha.site');
+        return view('website.contact.index', $data);
     }
 
     /**
@@ -62,13 +65,10 @@ class ContactController extends Controller
             'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
 
-        $setting = Setting::find(1);
-        $contact = Contact::find(1);
-
         if ($this->inbox->create($request->all())) {
-            return redirect()->route('contact.index')->with(['status' => 'success', 'message' => 'Save Successfully']);
+            return response()->json(['status' => 'success', 'message' => 'Message Send'], 200);
         }
-        return redirect()->route('contact.index')->with(['status' => 'danger', 'message' => 'Save Failed, Contact Developer']);
+        return response()->json(['status' => 'danger', 'message' => 'Message Not Send, Contact Administrator'], 401);
     }
 
     /**

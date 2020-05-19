@@ -41,6 +41,16 @@ class Article extends Model
         return asset('img/default-article.jpg');
     }
 
+    public function nextArticle()
+    {
+        return $this->where('id', '>', $this->id)->whereCategoryArticleId($this->category_article_id)->orderBy('id', 'asc')->first();
+    }
+
+    public function previousArticle()
+    {
+        return $this->where('id', '<', $this->id)->whereCategoryArticleId($this->category_article_id)->orderBy('id', 'desc')->first();
+    }
+
     public function categoryArticle()
     {
         return $this->belongsTo(CategoryArticle::class);

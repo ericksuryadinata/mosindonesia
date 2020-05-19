@@ -28,7 +28,7 @@
                                 </ul>
                             </div>
                             <div class="entry-content">
-                                <p>{{str_limit($article->description, 100)}}</p>
+                                <p>{{$article->niceDescription(100)}}</p>
                             </div>
                             <div class="entry-share clearfix">
                                 <div class="entry-button">

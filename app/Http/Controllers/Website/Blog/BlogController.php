@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function __construct()
     {
-        View::share('menu','Blog');
+        View::share('menu', 'Blog');
     }
     /**
      * Display a listing of the resource.
@@ -96,7 +96,8 @@ class BlogController extends Controller
         //
     }
 
-    public function category($category){
+    public function category($category)
+    {
 
         $categoryArticle = CategoryArticle::whereSlug($category)->first();
         View::share('subMenu', $categoryArticle->name);
@@ -105,11 +106,11 @@ class BlogController extends Controller
         return view('website.blog.category', compact('articles', 'categoryArticle'));
     }
 
-    public function single($category, $slug){
-
-        $categoryArticle = CategoryArticle::whereSlug($category)->first();
+    public function single($category, $slug)
+    {
         $article = Article::whereSlug($slug)->first();
-
-        return [$categoryArticle, $article];
+        $recentPosts = Article::orderBy('id','desc')->take(3)->get();
+        $relatedPosts = Article::inRandomOrder()->whereCategoryArticleId($article->categoryArticle->id)->take(4)->get();
+        return view('website.blog.single', compact('article','recentPosts','relatedPosts'));
     }
 }

@@ -109,6 +109,7 @@ class BlogController extends Controller
     public function single($category, $slug)
     {
         $article = Article::whereSlug($slug)->first();
+        View::share('subMenu', $article->categoryArticle->name);
         $recentPosts = Article::orderBy('id','desc')->take(3)->get();
         $relatedPosts = Article::inRandomOrder()->whereCategoryArticleId($article->categoryArticle->id)->take(4)->get();
         return view('website.blog.single', compact('article','recentPosts','relatedPosts'));

@@ -19,7 +19,7 @@
                         </div>
                         <div class="blog-detail">
                             <div class="entry-title mb-10">
-                                <a href=""{{route('website.blog.single',['category' => $categoryArticle->slug, 'slug' => $article->slug])}}"">{{$article->title}}</a>
+                                <a href="{{route('website.blog.single',['category' => $categoryArticle->slug, 'slug' => $article->slug])}}">{{$article->title}}</a>
                             </div>
                             <div class="entry-meta mb-10">
                                 <ul>
